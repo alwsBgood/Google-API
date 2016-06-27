@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="">
+    <title>Google API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+
+var initializeContactsMap;
+
+initializeContactsMap = function() {
+  var canvasMap, location, locationMarker, options, x, y;
+  if ($('#map').length) {
+    x = 50.5299384; // Здесь задаются координаты необходимого адреса
+    y = 30.6235194; // 
+    location = new google.maps.LatLng(x, y);
+    options = {
+      center: {lat: 50.529320,  lng: 30.622749}, // Координаты по которым будет центрироваться карта
+      zoom: 18, 
+      mapTypeControl: false,
+      scrollwheel: false
+    };
+
+var markerImage = new google.maps.MarkerImage(
+      'map.png',//Сюда прикрепляем картинку, которая будет отображется  вместо стандартного маркера местоположения google
+      new google.maps.Size(330,395), 
+      new google.maps.Point(0,0),
+      new google.maps.Point(290,-10) // Местоположение метки (Xpx, Ypx)
+    );
+
+
+    canvasMap = new google.maps.Map(document.getElementById('map'), options);
+    locationMarker = new google.maps.Marker({
+        icon: markerImage,
+      position: location
+    });
+
+    return locationMarker.setMap(canvasMap);
+  }
+};
+$(document).ready(initializeContactsMap);
+
+    </script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+      <div id="map"></div>
+
+
+<!-- Если использовать это скрипт выдает предупреждение warning: NoApiKeys.
+Можно получить свой API key и подвязать его так:
+<script src="http://maps.googleapis.com/maps/api/js?key=Кей вставлять сюда"></script>
+Но это вроде как не обязательно ^_^
+-->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+</body>
+</html>
