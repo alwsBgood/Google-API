@@ -26,7 +26,7 @@ initializeContactsMap = function() {
     };
 
 var markerImage = new google.maps.MarkerImage(
-      'map.png',//Сюда прикрепляем картинку, которая будет отображется  вместо стандартного маркера местоположения google
+      '#text',//Сюда прикрепляем картинку, которая будет отображется  вместо стандартного маркера местоположения google
       new google.maps.Size(330,395), 
       new google.maps.Point(0,0),
       new google.maps.Point(290,-10) // Местоположение метки (Xpx, Ypx)
@@ -50,7 +50,8 @@ $(document).ready(initializeContactsMap);
 </head>
 <body>
       <div id="map"></div>
-
+      <div id="text">TEXTTEXT</div>
+    
 
 <!-- Если не использовать keys выдает предупреждение warning: NoApiKeys.
 Нужно получить свой API key !!! -->
